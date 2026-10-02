@@ -1,0 +1,2504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0c">
+<title>Black Friday Phones</title>
+
+<style>
+:root{
+  --white:#fff;
+  --black:#09090b;
+  --black-2:#121216;
+  --black-3:#1b1b20;
+
+  --red:#ff2f3d;
+  --red-2:#d91325;
+  --red-3:#8f0a16;
+
+  font-family:
+    Inter,
+    ui-rounded,
+    "SF Pro Display",
+    "SF Pro Text",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+}
+
+body{
+  position:fixed;
+  inset:0;
+
+  background:#050506;
+  color:#fff;
+
+  user-select:none;
+  -webkit-font-smoothing:antialiased;
+}
+
+button{
+  border:0;
+  padding:0;
+  font:inherit;
+  color:inherit;
+  background:none;
+  cursor:pointer;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+img{
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+/* =========================================
+   APP
+========================================= */
+
+.app{
+  position:relative;
+
+  width:min(100%,430px);
+  height:100dvh;
+
+  margin:0 auto;
+
+  overflow:hidden;
+  isolation:isolate;
+
+  background:
+    radial-gradient(
+      circle at 5% 4%,
+      rgba(255,49,64,.42) 0%,
+      rgba(180,8,25,.20) 20%,
+      transparent 42%
+    ),
+
+    radial-gradient(
+      circle at 96% 30%,
+      rgba(133,0,18,.35) 0%,
+      transparent 40%
+    ),
+
+    radial-gradient(
+      circle at 10% 92%,
+      rgba(255,30,45,.17) 0%,
+      transparent 39%
+    ),
+
+    linear-gradient(
+      150deg,
+      #050506 0%,
+      #0c0a0c 30%,
+      #16090d 58%,
+      #09090b 78%,
+      #020203 100%
+    );
+}
+
+@media(min-width:520px){
+
+  body{
+    background:#020203;
+  }
+
+  .app{
+    height:calc(100dvh - 28px);
+
+    margin-top:14px;
+
+    border-radius:34px;
+
+    box-shadow:
+      0 34px 90px
+      rgba(0,0,0,.72),
+
+      0 0 0 1px
+      rgba(255,255,255,.045);
+  }
+}
+
+/* =========================================
+   BACKGROUND TEXTURE
+========================================= */
+
+.texture{
+  position:absolute;
+  inset:0;
+
+  z-index:-5;
+
+  pointer-events:none;
+
+  opacity:.18;
+
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,.16) .7px,
+      transparent .8px
+    );
+
+  background-size:4px 4px;
+}
+
+.red-glow{
+  position:absolute;
+
+  z-index:-4;
+
+  pointer-events:none;
+
+  border-radius:50%;
+
+  filter:blur(45px);
+}
+
+.red-glow.one{
+  width:220px;
+  height:220px;
+
+  top:-80px;
+  right:-100px;
+
+  background:
+    rgba(255,24,41,.19);
+}
+
+.red-glow.two{
+  width:190px;
+  height:190px;
+
+  bottom:20px;
+  left:-100px;
+
+  background:
+    rgba(193,0,19,.18);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header{
+  position:absolute;
+
+  z-index:40;
+
+  top:0;
+  left:0;
+  right:0;
+
+  padding:
+    calc(16px + env(safe-area-inset-top))
+    17px
+    12px;
+
+  pointer-events:none;
+}
+
+.site-title{
+  width:100%;
+
+  padding:14px 18px;
+
+  border-radius:19px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(19,19,23,.94),
+      rgba(36,10,15,.93)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.09);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,0,0,.3),
+
+    inset
+    0 1px 0
+    rgba(255,255,255,.04);
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  text-align:center;
+
+  font-size:22px;
+  font-weight:950;
+
+  line-height:1;
+
+  letter-spacing:-.045em;
+
+  text-shadow:
+    0 0 16px
+    rgba(255,38,52,.24);
+}
+
+.site-title span{
+  color:#ff3948;
+}
+
+/* =========================================
+   CATALOG
+========================================= */
+
+.catalog{
+  position:relative;
+
+  width:100%;
+  height:100%;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  padding:
+    calc(92px + env(safe-area-inset-top))
+    16px
+    calc(116px + env(safe-area-inset-bottom));
+
+  scrollbar-width:none;
+
+  -webkit-overflow-scrolling:touch;
+}
+
+.catalog::-webkit-scrollbar{
+  display:none;
+}
+
+.phone-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* =========================================
+   PHONE CARD
+========================================= */
+
+.phone-card{
+  position:relative;
+
+  width:100%;
+  height:122px;
+
+  padding:8px 9px;
+
+  display:grid;
+
+  grid-template-columns:
+    114px
+    1fr
+    52px;
+
+  gap:9px;
+
+  align-items:center;
+
+  overflow:hidden;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(25,25,30,.94),
+      rgba(17,17,20,.88)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.075);
+
+  box-shadow:
+    0 11px 28px
+    rgba(0,0,0,.30),
+
+    inset
+    0 1px 0
+    rgba(255,255,255,.025);
+
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+
+  transition:
+    transform .15s ease,
+    background .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.phone-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:130px;
+  height:130px;
+
+  top:-75px;
+  right:-55px;
+
+  border-radius:50%;
+
+  background:
+    rgba(206,14,30,.12);
+
+  filter:blur(8px);
+
+  pointer-events:none;
+}
+
+.phone-card::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255,255,255,.035),
+      transparent 34%
+    );
+}
+
+.phone-card:active{
+  transform:scale(.987);
+}
+
+.phone-card.selected{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(83,8,18,.96),
+      rgba(32,12,16,.94)
+    );
+
+  border-color:
+    rgba(255,55,69,.65);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(255,44,59,.075),
+
+    0 12px 29px
+    rgba(0,0,0,.32),
+
+    0 0 22px
+    rgba(222,16,34,.11);
+}
+
+/* =========================================
+   PHONE IMAGE
+========================================= */
+
+.phone-image-area{
+  position:relative;
+
+  z-index:2;
+
+  width:114px;
+  height:103px;
+
+  padding:4px 6px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #eeeeef
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(0,0,0,.28);
+}
+
+.phone-image{
+  width:100%;
+  height:100%;
+
+  max-width:102px;
+  max-height:94px;
+
+  object-fit:contain;
+
+  filter:
+    var(--phone-filter)
+    saturate(1.03);
+
+  transition:
+    transform .25s ease;
+}
+
+.phone-card.selected
+.phone-image{
+  transform:scale(1.055);
+}
+
+/* =========================================
+   PHONE TEXT
+========================================= */
+
+.phone-data{
+  position:relative;
+
+  z-index:2;
+
+  min-width:0;
+}
+
+.brand{
+  margin-bottom:3px;
+
+  color:
+    rgba(255,255,255,.45);
+
+  font-size:9px;
+  font-weight:650;
+}
+
+.model{
+  color:#fff;
+
+  font-size:17px;
+  font-weight:850;
+
+  line-height:1.05;
+
+  letter-spacing:-.04em;
+}
+
+.color-name{
+  margin-top:6px;
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:10px;
+  font-weight:750;
+}
+
+.storage{
+  margin-top:3px;
+
+  color:
+    rgba(255,255,255,.39);
+
+  font-size:9px;
+  font-weight:650;
+}
+
+/* =========================================
+   SELECT
+========================================= */
+
+.select-button{
+  position:relative;
+
+  z-index:3;
+
+  width:48px;
+  height:48px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  color:#151519;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #e8e8ea
+    );
+
+  box-shadow:
+    0 6px 16px
+    rgba(0,0,0,.24);
+
+  transition:
+    transform .15s ease,
+    color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.select-button:active{
+  transform:scale(.9);
+}
+
+.select-button.selected{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff4351,
+      #d20f21
+    );
+
+  box-shadow:
+    0 7px 17px
+    rgba(216,14,31,.30),
+
+    inset
+    0 1px 0
+    rgba(255,255,255,.24);
+}
+
+.plus-icon{
+  position:relative;
+
+  width:27px;
+  height:27px;
+}
+
+.plus-icon::before,
+.plus-icon::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  border-radius:99px;
+
+  background:currentColor;
+}
+
+.plus-icon::before{
+  width:25px;
+  height:3px;
+}
+
+.plus-icon::after{
+  width:3px;
+  height:25px;
+}
+
+.check-icon{
+  display:none;
+
+  width:23px;
+  height:14px;
+
+  border-left:4px solid #fff;
+  border-bottom:4px solid #fff;
+
+  transform:
+    translateY(-3px)
+    rotate(-45deg);
+}
+
+.select-button.selected
+.plus-icon{
+  display:none;
+}
+
+.select-button.selected
+.check-icon{
+  display:block;
+}
+
+/* =========================================
+   BOTTOM PANEL
+========================================= */
+
+.bottom-panel{
+  position:absolute;
+
+  z-index:30;
+
+  left:16px;
+  right:16px;
+
+  bottom:
+    calc(14px + env(safe-area-inset-bottom));
+
+  padding:6px;
+
+  border-radius:19px;
+
+  background:
+    rgba(10,10,12,.92);
+
+  border:
+    1px solid
+    rgba(255,255,255,.085);
+
+  box-shadow:
+    0 16px 35px
+    rgba(0,0,0,.42),
+
+    0 0 26px
+    rgba(173,0,17,.08);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.bottom-row{
+  display:grid;
+
+  grid-template-columns:
+    72px
+    1fr;
+
+  gap:8px;
+}
+
+/* =========================================
+   BASKET
+========================================= */
+
+.basket-box{
+  position:relative;
+
+  width:72px;
+  height:57px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1d1d22,
+      #121216
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+}
+
+.basket-icon{
+  position:relative;
+
+  width:29px;
+  height:25px;
+}
+
+.basket-icon::before{
+  content:"";
+
+  position:absolute;
+
+  left:3px;
+  right:3px;
+  bottom:1px;
+
+  height:14px;
+
+  border:3px solid #fff;
+  border-top:0;
+
+  border-radius:
+    0 0 8px 8px;
+}
+
+.basket-icon::after{
+  content:"";
+
+  position:absolute;
+
+  left:7px;
+  right:7px;
+  top:0;
+
+  height:10px;
+
+  border:3px solid #fff;
+  border-bottom:0;
+
+  border-radius:
+    13px 13px 0 0;
+}
+
+.basket-badge{
+  position:absolute;
+
+  right:7px;
+  top:7px;
+
+  min-width:22px;
+  height:22px;
+
+  padding:0 6px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:99px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      #ff4351,
+      #d30e20
+    );
+
+  box-shadow:
+    0 4px 13px
+    rgba(214,14,31,.34);
+
+  font-size:11px;
+  font-weight:900;
+}
+
+.basket-badge.zero{
+  color:
+    rgba(255,255,255,.68);
+
+  background:#333338;
+
+  box-shadow:none;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta{
+  width:100%;
+  height:57px;
+
+  border-radius:14px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff3948 0%,
+      #df1226 55%,
+      #b20818 100%
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  box-shadow:
+    0 9px 22px
+    rgba(183,5,23,.30),
+
+    inset
+    0 1px 0
+    rgba(255,255,255,.24);
+
+  font-size:16px;
+  font-weight:900;
+
+  letter-spacing:-.02em;
+
+  transition:
+    transform .15s ease,
+    filter .15s ease;
+}
+
+.cta:active{
+  transform:scale(.98);
+  filter:brightness(.92);
+}
+
+.cta.shake{
+  animation:shake .4s ease;
+}
+
+@keyframes shake{
+  25%{transform:translateX(-7px)}
+  50%{transform:translateX(7px)}
+  75%{transform:translateX(-4px)}
+}
+
+/* =========================================
+   DELIVERY
+========================================= */
+
+.delivery-overlay{
+  position:absolute;
+
+  z-index:100;
+
+  inset:0;
+
+  opacity:0;
+  visibility:hidden;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 13% 12%,
+      rgba(255,43,58,.36),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 92% 28%,
+      rgba(116,0,14,.38),
+      transparent 42%
+    ),
+
+    linear-gradient(
+      150deg,
+      #050506 0%,
+      #10080a 38%,
+      #24080e 67%,
+      #070708 100%
+    );
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.delivery-overlay.visible{
+  opacity:1;
+  visibility:visible;
+}
+
+/* =========================================
+   ROAD
+========================================= */
+
+.road{
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:126px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(150,0,18,.12),
+      transparent
+    );
+}
+
+.road::before{
+  content:"";
+
+  position:absolute;
+
+  left:-10%;
+  right:-10%;
+  bottom:28px;
+
+  height:68px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #242428,
+      #0e0e11
+    );
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.05);
+}
+
+.road::after{
+  content:"";
+
+  position:absolute;
+
+  left:8%;
+  right:8%;
+  bottom:59px;
+
+  height:4px;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,.9) 0 26px,
+      transparent 26px 44px
+    );
+
+  opacity:.68;
+}
+
+/* =========================================
+   TRUCK
+========================================= */
+
+.truck{
+  position:absolute;
+
+  z-index:110;
+
+  left:50%;
+  bottom:54px;
+
+  width:290px;
+  height:160px;
+
+  transform:
+    translateX(-50%);
+
+  transition:
+    transform
+    1.15s
+    cubic-bezier(.25,.8,.2,1);
+}
+
+.truck.drive-away{
+  transform:
+    translateX(230%);
+}
+
+.truck-body{
+  position:absolute;
+
+  left:22px;
+  bottom:28px;
+
+  width:175px;
+  height:72px;
+
+  border-radius:
+    14px 10px 10px 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #242429,
+      #111114
+    );
+
+  border:
+    2px solid
+    rgba(255,49,64,.28);
+
+  box-shadow:
+    0 12px 22px
+    rgba(0,0,0,.28);
+}
+
+.truck-bed{
+  position:absolute;
+
+  left:30px;
+  bottom:40px;
+
+  width:160px;
+  height:48px;
+
+  overflow:hidden;
+
+  border-radius:8px;
+
+  background:
+    linear-gradient(
+      #1c1c21,
+      #09090b
+    );
+
+  box-shadow:
+    inset
+    0 6px 10px
+    rgba(0,0,0,.42);
+}
+
+.truck-cargo{
+  position:absolute;
+
+  inset:0;
+
+  padding:4px;
+
+  display:flex;
+
+  align-items:flex-end;
+  justify-content:center;
+
+  gap:2px;
+}
+
+.cargo-phone{
+  width:27px;
+  height:35px;
+
+  object-fit:contain;
+
+  filter:
+    var(--phone-filter);
+}
+
+.truck-cab{
+  position:absolute;
+
+  right:27px;
+  bottom:28px;
+
+  width:95px;
+  height:82px;
+
+  border-radius:
+    18px 20px 10px 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff3948,
+      #bc0719
+    );
+
+  border:
+    2px solid
+    rgba(255,255,255,.10);
+
+  box-shadow:
+    0 10px 20px
+    rgba(125,0,15,.29);
+}
+
+.truck-window{
+  position:absolute;
+
+  left:16px;
+  top:11px;
+
+  width:47px;
+  height:31px;
+
+  border-radius:
+    11px 11px 8px 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dfe6eb,
+      #8f9da7
+    );
+
+  border:
+    2px solid
+    rgba(255,255,255,.17);
+}
+
+.truck-light{
+  position:absolute;
+
+  right:-4px;
+  top:45px;
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 14px
+    rgba(255,255,255,.75);
+}
+
+.wheel{
+  position:absolute;
+
+  bottom:0;
+
+  width:52px;
+  height:52px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #a9a9ae 0 19%,
+      #333337 20% 34%,
+      #09090b 35% 64%,
+      #020203 65%
+    );
+
+  border:
+    2px solid #000;
+}
+
+.wheel.left{left:57px}
+.wheel.right{right:53px}
+
+/* =========================================
+   FLYING PHONE
+========================================= */
+
+.flying-phone{
+  position:absolute;
+
+  z-index:120;
+
+  width:100px;
+  height:100px;
+
+  object-fit:contain;
+
+  opacity:0;
+
+  filter:
+    var(--phone-filter);
+
+  pointer-events:none;
+}
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+.confetti-layer{
+  position:absolute;
+
+  inset:0;
+
+  z-index:130;
+
+  overflow:hidden;
+
+  pointer-events:none;
+}
+
+.confetti{
+  position:absolute;
+
+  top:-20px;
+
+  width:8px;
+  height:14px;
+
+  opacity:0;
+
+  border-radius:2px;
+}
+
+/* =========================================
+   FINAL CARD
+========================================= */
+
+.final-result{
+  position:absolute;
+
+  z-index:150;
+
+  left:50%;
+  top:45%;
+
+  width:
+    min(
+      calc(100% - 46px),
+      320px
+    );
+
+  padding:
+    28px
+    22px
+    25px;
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:
+    translate(-50%,-50%)
+    scale(.82);
+
+  border-radius:26px;
+
+  text-align:center;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      150deg,
+      rgba(29,29,34,.97),
+      rgba(15,15,18,.98)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  box-shadow:
+    0 26px 62px
+    rgba(0,0,0,.52),
+
+    0 0 30px
+    rgba(204,8,28,.10);
+
+  backdrop-filter:blur(18px);
+
+  transition:
+    opacity .4s ease,
+    transform .5s
+    cubic-bezier(.2,1,.25,1),
+    visibility .4s ease;
+}
+
+.final-result.visible{
+  opacity:1;
+  visibility:visible;
+
+  transform:
+    translate(-50%,-50%)
+    scale(1);
+}
+
+.final-check{
+  position:relative;
+
+  width:76px;
+  height:76px;
+
+  margin:
+    0 auto
+    17px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff4351,
+      #c8081a
+    );
+
+  box-shadow:
+    0 10px 25px
+    rgba(196,7,26,.31);
+}
+
+.final-check::before{
+  content:"";
+
+  position:absolute;
+
+  inset:-6px;
+
+  border:
+    2px solid
+    rgba(255,48,64,.22);
+
+  border-radius:50%;
+}
+
+.final-check-icon{
+  width:34px;
+  height:20px;
+
+  border-left:6px solid #fff;
+  border-bottom:6px solid #fff;
+
+  transform:
+    translateY(-4px)
+    rotate(-45deg);
+}
+
+.final-title{
+  font-size:23px;
+  font-weight:900;
+
+  line-height:1.08;
+
+  letter-spacing:-.04em;
+}
+
+.final-text{
+  margin-top:8px;
+
+  color:
+    rgba(255,255,255,.56);
+
+  font-size:14px;
+  font-weight:600;
+
+  line-height:1.4;
+}
+
+.final-button{
+  width:100%;
+  height:48px;
+
+  margin-top:18px;
+
+  border-radius:14px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff3948,
+      #bd0819
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.13);
+
+  box-shadow:
+    0 7px 17px
+    rgba(181,5,23,.25);
+
+  font-size:14px;
+  font-weight:850;
+}
+
+/* =========================================
+   SMALL HEIGHT
+========================================= */
+
+@media(max-height:720px){
+
+  .site-header{
+    padding-top:
+      calc(
+        10px +
+        env(safe-area-inset-top)
+      );
+  }
+
+  .site-title{
+    padding:12px 16px;
+
+    font-size:20px;
+  }
+
+  .catalog{
+    padding-top:
+      calc(
+        78px +
+        env(safe-area-inset-top)
+      );
+  }
+
+  .phone-card{
+    height:110px;
+
+    grid-template-columns:
+      102px
+      1fr
+      48px;
+  }
+
+  .phone-image-area{
+    width:102px;
+    height:91px;
+  }
+
+  .phone-image{
+    max-width:92px;
+    max-height:82px;
+  }
+
+  .model{
+    font-size:16px;
+  }
+
+  .select-button{
+    width:45px;
+    height:45px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app" id="app">
+
+  <div class="texture"></div>
+  <div class="red-glow one"></div>
+  <div class="red-glow two"></div>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+
+    <div class="site-title">
+      <span>Black Friday</span> Phones
+    </div>
+
+  </header>
+
+  <!-- CATALOG -->
+
+  <main
+    class="catalog"
+    id="catalog"
+  >
+
+    <div
+      class="phone-list"
+      id="phoneList"
+    ></div>
+
+  </main>
+
+  <!-- CART + CTA -->
+
+  <div class="bottom-panel">
+
+    <div class="bottom-row">
+
+      <div class="basket-box">
+
+        <div class="basket-icon"></div>
+
+        <div
+          class="basket-badge zero"
+          id="basketBadge"
+        >
+          0
+        </div>
+
+      </div>
+
+      <button
+        class="cta"
+        id="cta"
+        type="button"
+      >
+        Get insights
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- DELIVERY -->
+
+  <div
+    class="delivery-overlay"
+    id="deliveryOverlay"
+  >
+
+    <div class="road"></div>
+
+    <div
+      class="truck"
+      id="truck"
+    >
+
+      <div class="truck-body"></div>
+
+      <div class="truck-bed">
+
+        <div
+          class="truck-cargo"
+          id="truckCargo"
+        ></div>
+
+      </div>
+
+      <div class="truck-cab">
+
+        <div class="truck-window"></div>
+
+        <div class="truck-light"></div>
+
+      </div>
+
+      <div class="wheel left"></div>
+      <div class="wheel right"></div>
+
+    </div>
+
+    <div
+      class="confetti-layer"
+      id="confettiLayer"
+    ></div>
+
+    <div
+      class="final-result"
+      id="finalResult"
+    >
+
+      <div class="final-check">
+
+        <div class="final-check-icon"></div>
+
+      </div>
+
+      <div class="final-title">
+        Your iPhone 18 is on the way!
+      </div>
+
+      <div class="final-text">
+        Your selected iPhone 18 is heading to you.
+      </div>
+
+      <button
+        class="final-button"
+        id="backButton"
+        type="button"
+      >
+        Choose again
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+/* =========================================
+   SAME IPHONE IMAGE
+========================================= */
+
+const BASE_IPHONE_IMAGE =
+  "https://geniusphone.it/cdn/shop/files/Progettosenzatitolo_5.png?v=1761114584";
+
+
+/* =========================================
+   COLORS
+========================================= */
+
+const colors = [
+
+  {
+    id:"burgundy",
+    name:"Burgundy",
+    filter:
+      "hue-rotate(328deg) saturate(1.7) brightness(.72) contrast(1.08)"
+  },
+
+  {
+    id:"glacier",
+    name:"Glacier",
+    filter:
+      "hue-rotate(170deg) saturate(.45) brightness(1.22) contrast(.92)"
+  },
+
+  {
+    id:"silver",
+    name:"Silver",
+    filter:
+      "grayscale(1) brightness(1.45) contrast(.78)"
+  },
+
+  {
+    id:"black",
+    name:"Black",
+    filter:
+      "grayscale(1) brightness(.35) contrast(1.35)"
+  }
+
+];
+
+
+const storages = [
+  "256 GB",
+  "512 GB",
+  "1 TB"
+];
+
+
+/* =========================================
+   CREATE PRODUCTS
+========================================= */
+
+const phones = [];
+
+
+colors.forEach(
+  color => {
+
+    storages.forEach(
+      storage => {
+
+        phones.push(
+          {
+            id:
+              `${color.id}-${storage}`,
+
+            model:
+              "iPhone 18",
+
+            color:
+              color.name,
+
+            storage:
+              storage,
+
+            filter:
+              color.filter
+          }
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================
+   STATE
+========================================= */
+
+const state = {
+  selected:[]
+};
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const $ =
+  selector =>
+    document.querySelector(
+      selector
+    );
+
+
+const app =
+  $("#app");
+
+const catalog =
+  $("#catalog");
+
+const phoneList =
+  $("#phoneList");
+
+const basketBadge =
+  $("#basketBadge");
+
+const cta =
+  $("#cta");
+
+const deliveryOverlay =
+  $("#deliveryOverlay");
+
+const truck =
+  $("#truck");
+
+const truckCargo =
+  $("#truckCargo");
+
+const confettiLayer =
+  $("#confettiLayer");
+
+const finalResult =
+  $("#finalResult");
+
+const backButton =
+  $("#backButton");
+
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
+
+function renderPhones(){
+
+  const scroll =
+    catalog.scrollTop;
+
+
+  phoneList.innerHTML =
+    "";
+
+
+  phones.forEach(
+    phone => {
+
+      const selected =
+        state.selected.includes(
+          phone.id
+        );
+
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+
+      card.className =
+        "phone-card" +
+        (
+          selected
+            ? " selected"
+            : ""
+        );
+
+
+      card.innerHTML =
+        `
+          <div class="phone-image-area">
+
+            <img
+              class="phone-image"
+
+              src="${BASE_IPHONE_IMAGE}"
+
+              alt="iPhone 18 ${phone.color}"
+
+              draggable="false"
+
+              style="
+                --phone-filter:
+                ${phone.filter};
+              "
+            >
+
+          </div>
+
+
+          <div class="phone-data">
+
+            <div class="brand">
+              Apple
+            </div>
+
+            <div class="model">
+              iPhone 18
+            </div>
+
+            <div class="color-name">
+              ${phone.color}
+            </div>
+
+            <div class="storage">
+              ${phone.storage}
+            </div>
+
+          </div>
+
+
+          <button
+            class="
+              select-button
+              ${
+                selected
+                  ? "selected"
+                  : ""
+              }
+            "
+
+            type="button"
+          >
+
+            <div class="plus-icon"></div>
+
+            <div class="check-icon"></div>
+
+          </button>
+        `;
+
+
+      card
+        .querySelector(
+          ".select-button"
+        )
+        .addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+
+            togglePhone(
+              phone.id
+            );
+
+          }
+        );
+
+
+      card.addEventListener(
+        "click",
+        event => {
+
+          if(
+            event.target.closest(
+              ".select-button"
+            )
+          ){
+            return;
+          }
+
+
+          togglePhone(
+            phone.id
+          );
+
+        }
+      );
+
+
+      phoneList.appendChild(
+        card
+      );
+
+    }
+  );
+
+
+  updateBasket();
+
+
+  requestAnimationFrame(
+    () => {
+
+      catalog.scrollTop =
+        scroll;
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+function togglePhone(id){
+
+  const index =
+    state.selected.indexOf(id);
+
+
+  if(index >= 0){
+
+    state.selected.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    state.selected.push(id);
+
+  }
+
+
+  renderPhones();
+
+}
+
+
+/* =========================================
+   CART
+========================================= */
+
+function updateBasket(){
+
+  basketBadge.textContent =
+    state.selected.length;
+
+
+  basketBadge.classList.toggle(
+    "zero",
+    state.selected.length === 0
+  );
+
+}
+
+
+/* =========================================
+   CTA
+========================================= */
+
+cta.addEventListener(
+  "click",
+  () => {
+
+    if(
+      state.selected.length === 0
+    ){
+
+      cta.classList.remove(
+        "shake"
+      );
+
+
+      void cta.offsetWidth;
+
+
+      cta.classList.add(
+        "shake"
+      );
+
+
+      return;
+    }
+
+
+    startDelivery();
+
+  }
+);
+
+
+/* =========================================
+   DELIVERY
+========================================= */
+
+function startDelivery(){
+
+  deliveryOverlay.classList.add(
+    "visible"
+  );
+
+
+  truck.classList.remove(
+    "drive-away"
+  );
+
+
+  finalResult.classList.remove(
+    "visible"
+  );
+
+
+  truckCargo.innerHTML =
+    "";
+
+
+  confettiLayer.innerHTML =
+    "";
+
+
+  document
+    .querySelectorAll(
+      ".flying-phone"
+    )
+    .forEach(
+      item =>
+        item.remove()
+    );
+
+
+  const selected =
+    state.selected
+      .map(
+        id =>
+          phones.find(
+            phone =>
+              phone.id === id
+          )
+      )
+      .filter(Boolean);
+
+
+  /*
+    Flying phones into truck.
+  */
+
+  selected
+    .slice(
+      0,
+      6
+    )
+    .forEach(
+      (
+        phone,
+        index
+      ) => {
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+
+        image.className =
+          "flying-phone";
+
+
+        image.src =
+          BASE_IPHONE_IMAGE;
+
+
+        image.style.setProperty(
+          "--phone-filter",
+          phone.filter
+        );
+
+
+        const col =
+          index % 3;
+
+
+        const row =
+          Math.floor(
+            index / 3
+          );
+
+
+        const startX =
+          25 +
+          col * 120;
+
+
+        const startY =
+          20 +
+          row * 90;
+
+
+        image.style.left =
+          `${startX}px`;
+
+
+        image.style.top =
+          `${startY}px`;
+
+
+        deliveryOverlay.appendChild(
+          image
+        );
+
+
+        const targetX =
+          app.clientWidth /
+          2 -
+          startX;
+
+
+        const targetY =
+          app.clientHeight -
+          180 -
+          startY;
+
+
+        const animation =
+          image.animate(
+            [
+              {
+                opacity:0,
+
+                transform:
+                  "translateY(-25px) scale(.8)"
+              },
+
+              {
+                opacity:1,
+
+                transform:
+                  "translateY(0) scale(1)",
+
+                offset:.15
+              },
+
+              {
+                opacity:1,
+
+                transform:
+                  `
+                    translate(
+                      ${targetX*.5}px,
+                      ${targetY*.55}px
+                    )
+
+                    scale(.7)
+                  `,
+
+                offset:.6
+              },
+
+              {
+                opacity:0,
+
+                transform:
+                  `
+                    translate(
+                      ${targetX}px,
+                      ${targetY}px
+                    )
+
+                    scale(.3)
+                  `
+              }
+            ],
+
+            {
+              duration:1200,
+
+              delay:
+                index * 140,
+
+              easing:
+                "cubic-bezier(.2,.72,.2,1)",
+
+              fill:
+                "forwards"
+            }
+          );
+
+
+        animation.onfinish =
+          () => {
+
+            image.remove();
+
+          };
+
+      }
+    );
+
+
+  /*
+    Add phones into truck.
+  */
+
+  window.setTimeout(
+    () => {
+
+      selected
+        .slice(
+          0,
+          5
+        )
+        .forEach(
+          phone => {
+
+            const image =
+              document.createElement(
+                "img"
+              );
+
+
+            image.className =
+              "cargo-phone";
+
+
+            image.src =
+              BASE_IPHONE_IMAGE;
+
+
+            image.style.setProperty(
+              "--phone-filter",
+              phone.filter
+            );
+
+
+            truckCargo.appendChild(
+              image
+            );
+
+          }
+        );
+
+    },
+    1350
+  );
+
+
+  /*
+    Truck leaves WITH phones.
+  */
+
+  window.setTimeout(
+    () => {
+
+      truck.classList.add(
+        "drive-away"
+      );
+
+    },
+    1800
+  );
+
+
+  /*
+    Confetti.
+  */
+
+  window.setTimeout(
+    createConfetti,
+    2050
+  );
+
+
+  /*
+    Final.
+  */
+
+  window.setTimeout(
+    () => {
+
+      finalResult.classList.add(
+        "visible"
+      );
+
+    },
+    2500
+  );
+
+}
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti(){
+
+  confettiLayer.innerHTML =
+    "";
+
+
+  const colors =
+    [
+      "#ffffff",
+      "#ff3544",
+      "#d20d20",
+      "#8f0715",
+      "#2b2b30",
+      "#5a5a60"
+    ];
+
+
+  for(
+    let i=0;
+    i<90;
+    i++
+  ){
+
+    const piece =
+      document.createElement(
+        "span"
+      );
+
+
+    piece.className =
+      "confetti";
+
+
+    piece.style.left =
+      `${Math.random()*100}%`;
+
+
+    piece.style.width =
+      `${5+Math.random()*7}px`;
+
+
+    piece.style.height =
+      `${8+Math.random()*11}px`;
+
+
+    piece.style.background =
+      colors[
+        Math.floor(
+          Math.random() *
+          colors.length
+        )
+      ];
+
+
+    confettiLayer.appendChild(
+      piece
+    );
+
+
+    const rotation =
+      Math.random()*900;
+
+
+    const x =
+      (
+        Math.random() -
+        .5
+      ) *
+      115;
+
+
+    const animation =
+      piece.animate(
+        [
+          {
+            opacity:0,
+
+            transform:
+              "translate(0,-20px) rotate(0deg)"
+          },
+
+          {
+            opacity:1,
+
+            offset:.1
+          },
+
+          {
+            opacity:0,
+
+            transform:
+              `
+                translate(
+                  ${x}px,
+                  ${app.clientHeight+100}px
+                )
+
+                rotate(
+                  ${rotation}deg
+                )
+              `
+          }
+        ],
+
+        {
+          duration:
+            1700 +
+            Math.random()*900,
+
+          delay:
+            Math.random()*300,
+
+          easing:
+            "cubic-bezier(.15,.62,.2,1)",
+
+          fill:
+            "forwards"
+        }
+      );
+
+
+    animation.onfinish =
+      () => {
+
+        piece.remove();
+
+      };
+
+  }
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+backButton.addEventListener(
+  "click",
+  () => {
+
+    deliveryOverlay.classList.remove(
+      "visible"
+    );
+
+
+    truck.classList.remove(
+      "drive-away"
+    );
+
+
+    finalResult.classList.remove(
+      "visible"
+    );
+
+
+    confettiLayer.innerHTML =
+      "";
+
+
+    truckCargo.innerHTML =
+      "";
+
+
+    document
+      .querySelectorAll(
+        ".flying-phone"
+      )
+      .forEach(
+        item =>
+          item.remove()
+      );
+
+
+    state.selected =
+      [];
+
+
+    renderPhones();
+
+
+    catalog.scrollTop =
+      0;
+
+  }
+);
+
+
+/* =========================================
+   PRELOAD
+========================================= */
+
+const preload =
+  new Image();
+
+
+preload.src =
+  BASE_IPHONE_IMAGE;
+
+
+/* =========================================
+   START
+========================================= */
+
+renderPhones();
+
+</script>
+
+</body>
+</html>
